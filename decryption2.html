@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monoalphabetic Decryptor #2</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    textarea, input { width: 100%; padding: 10px; margin-top: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+    .output { margin-top: 20px; white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 5px; }
+</style>
+</head>
+<body>
+
+<h2>Monoalphabetic Cipher Decryptor (Puzzle 2)</h2>
+
+<label for="cipher">Enter Ciphertext:</label>
+<textarea id="cipher" rows="4">DSB YBPUBD PGVB HY SHVVBR ERVBU DSB VBYK</textarea>
+
+<button onclick="decrypt()">Decrypt</button>
+
+<div class="output" id="result"></div>
+
+<script>
+  const key = {
+    'D': 't', 'S': 'h', 'B': 'e', 'Y': 's', 'P': 'c',
+    'U': 'r', 'G': 'o', 'V': 'd', 'H': 'i', 'R': 'n',
+    'E': 'u', 'K': 'k'
+  };
+
+  function decrypt() {
+    const input = document.getElementById('cipher').value.toUpperCase();
+    let output = '';
+
+    for (let char of input) {
+      if (/[A-Z]/.test(char)) {
+        output += key[char] || '?';
+      } else {
+        output += char;
+      }
+    }
+
+    document.getElementById('result').innerText = output;
+  }
+</script>
+
+</body>
+</html>
