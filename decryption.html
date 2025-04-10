@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monoalphabetic Cipher Decryptor</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+    textarea, input { width: 100%; padding: 10px; margin-top: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+    .output { margin-top: 20px; white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+<h2>Monoalphabetic Cipher Decryptor</h2>
+
+<label for="cipher">Enter Ciphertext:</label>
+<textarea id="cipher" rows="4">HBBD KBN IQF THLF VXSVRF IQF BHR JBBD</textarea>
+
+<button onclick="decrypt()">Decrypt</button>
+
+<div class="output" id="result"></div>
+
+<script>
+  const key = {
+    'H': 'l', 'B': 'o', 'D': 'k', 'K': 'f', 'N': 'r',
+    'I': 't', 'Q': 'h', 'F': 'e', 'T': 'c', 'L': 'u',
+    'V': 'i', 'X': 'n', 'S': 's', 'R': 'd', 'J': 'b'
+    // Add more mappings as you figure them out
+  };
+
+  function decrypt() {
+    const input = document.getElementById('cipher').value.toUpperCase();
+    let output = '';
+
+    for (let char of input) {
+      if (/[A-Z]/.test(char)) {
+        output += key[char] || '?';
+      } else {
+        output += char; // spaces or punctuation
+      }
+    }
+
+    document.getElementById('result').innerText = output;
+  }
+</script>
+
+</body>
+</html>
